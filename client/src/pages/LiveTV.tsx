@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { setSEOMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
+import LiveAIPanel from "@/components/LiveAIPanel";
+
 export default function LiveTV() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [isLive, setIsLive] = useState(true);
@@ -92,27 +94,27 @@ export default function LiveTV() {
                </div>
             </div>
 
-            {/* Sidebar Column - Live Chat & Upcoming */}
+            {/* Sidebar Column - AI Panel & Community */}
             <div className="space-y-8">
+               {/* New AI Analysis Panel */}
+               <LiveAIPanel />
+
                {/* Live Chat Mockup */}
-               <div className="bg-[#161616] rounded-xl border border-white/5 shadow-2xl flex flex-col h-[500px]">
+               <div className="bg-[#161616] rounded-xl border border-white/5 shadow-2xl flex flex-col h-[400px]">
                   <div className="p-4 border-b border-white/5 flex items-center justify-between">
                      <div className="flex items-center gap-2">
                         <MessageCircle className="w-4 h-4 text-primary" />
                         <span className="font-black uppercase tracking-widest text-xs text-white">Live Community Chat</span>
                      </div>
-                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   </div>
                   
                   <div className="flex-grow overflow-y-auto p-4 space-y-4">
                      {[
                        { user: "Kofi Owusu", msg: "Excellent reporting as always! 🇬🇭", color: "text-blue-400" },
                        { user: "Adjoa Mansa", msg: "Greetings from Accra! 📺", color: "text-amber-400" },
-                       { user: "Prince Bonsu", msg: "What time is the sports update starting?", color: "text-emerald-400" },
-                       { user: "Naa Ayeley", msg: "Love this new website experience 🔥", color: "text-pink-400" },
-                       { user: "Emma Darko", msg: "Watching from Kumasi, loud and clear!", color: "text-purple-400" },
+                       { user: "Prince Bonsu", msg: "Love this new website experience 🔥", color: "text-emerald-400" },
                      ].map((chat, i) => (
-                       <div key={i} className="flex gap-3 text-xs animate-in slide-in-from-bottom-2 fade-in">
+                       <div key={i} className="flex gap-3 text-xs">
                           <span className={cn("font-black tracking-tight shrink-0", chat.color)}>{chat.user}:</span>
                           <span className="text-white/80 font-medium leading-normal">{chat.msg}</span>
                        </div>
@@ -124,29 +126,8 @@ export default function LiveTV() {
                         <input 
                            type="text" 
                            placeholder="Say something nice..." 
-                           className="flex-1 bg-white/5 border border-white/10 rounded-sm px-4 py-2.5 text-xs text-white placeholder:text-white/20 focus:ring-1 focus:ring-primary outline-none transition-all"
+                           className="flex-1 bg-white/5 border border-white/10 rounded-sm px-4 py-2.5 text-xs text-white outline-none"
                         />
-                        <Button size="icon" className="bg-primary hover:bg-white hover:text-black">
-                           <ChevronRight className="w-4 h-4" />
-                        </Button>
-                     </div>
-                  </div>
-               </div>
-
-               {/* Up Next / Related */}
-               <div className="space-y-4">
-                  <h4 className="font-black uppercase tracking-widest text-[11px] text-white/40 flex items-center gap-2 ml-1">
-                     <Radio className="w-3 h-3" /> Up Next on TV
-                  </h4>
-                  <div className="group bg-gradient-to-br from-[#222] to-[#111] p-5 rounded-xl border border-white/5 hover:border-primary/40 transition-all cursor-pointer">
-                     <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 bg-black rounded-lg flex items-center justify-center border border-white/5 shadow-inner">
-                           <Tv className="w-6 h-6 text-primary animate-pulse" />
-                        </div>
-                        <div className="flex flex-col">
-                           <span className="text-primary font-black uppercase tracking-widest text-[9px] mb-1">08:00 PM Tonight</span>
-                           <h5 className="text-white font-black uppercase tracking-tight text-sm leading-tight">Ezra Evening News</h5>
-                        </div>
                      </div>
                   </div>
                </div>
